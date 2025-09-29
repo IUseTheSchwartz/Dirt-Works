@@ -4,7 +4,9 @@ export default function Landing() {
   return (
     <div className="min-h-screen flex flex-col">
       <header className="flex items-center justify-between p-5">
-        <div className="text-xl font-bold tracking-wide">Dirt <span className="text-accent">Works</span></div>
+        <div className="text-xl font-bold tracking-wide">
+          Dirt <span className="text-accent">Workz</span>
+        </div>
         <nav className="flex items-center gap-3">
           <Link className="btn-ghost" to="/login">Log In</Link>
           <Link className="btn" to="/demo">Request a Demo</Link>
@@ -57,7 +59,7 @@ export default function Landing() {
 
       <footer className="border-t border-white/10 p-5 text-sm text-white/60">
         <div className="max-w-6xl mx-auto flex justify-between">
-          <span>© {new Date().getFullYear()} Dirt Works</span>
+          <span>© {new Date().getFullYear()} Dirt Workz</span>
           <div className="flex gap-4">
             <a href="#" className="hover:underline">Privacy</a>
             <a href="#" className="hover:underline">Terms</a>
