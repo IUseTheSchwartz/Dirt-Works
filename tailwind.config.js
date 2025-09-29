@@ -1,6 +1,9 @@
 /** @type {import('tailwindcss').Config} */
 export default {
-  content: ["./index.html", "./src/**/*.{js,jsx}"],
+  content: [
+    "./index.html",
+    "./src/**/*.{js,jsx,ts,tsx}",
+  ],
   theme: {
     extend: {
       colors: {
@@ -9,7 +12,6 @@ export default {
         sand: "#D7C9B1",
         accent: "#FF7A1A",
       },
-      borderRadius: { xl2: "1.25rem" }
     },
   },
   plugins: [],
