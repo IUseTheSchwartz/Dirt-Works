@@ -5,17 +5,24 @@ export default function Login() {
   return (
     <div className="min-h-screen grid md:grid-cols-2">
       <div className="hidden md:block bg-[linear-gradient(135deg,#0F1115,30%,#23262B)] p-10">
-        <div className="text-2xl font-bold">Dirt <span className="text-accent">Works</span></div>
+        <div className="text-2xl font-bold">
+          Dirt <span className="text-accent">Workz</span>
+        </div>
         <div className="mt-24">
           <h1 className="text-4xl font-extrabold leading-tight">Move more metal.</h1>
-          <p className="mt-3 text-white/70">Fast, focused CRM for dirt bikes, side-by-sides, and sport bikes.</p>
+          <p className="mt-3 text-white/70">
+            Fast, focused CRM for dirt bikes, side-by-sides, and sport bikes.
+          </p>
         </div>
       </div>
 
       <div className="p-10 flex items-center">
         <div className="w-full max-w-md mx-auto">
           <h2 className="text-2xl font-bold">Log in</h2>
-          <form className="mt-6 grid gap-4" onSubmit={(e)=>{e.preventDefault(); navigate("/app");}}>
+          <form
+            className="mt-6 grid gap-4"
+            onSubmit={(e)=>{e.preventDefault(); navigate("/app");}}
+          >
             <div>
               <div className="label">Email</div>
               <input type="email" className="input" />
