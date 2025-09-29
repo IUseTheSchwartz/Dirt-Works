@@ -7,14 +7,19 @@ export default function RequestDemo() {
   return (
     <div className="min-h-screen max-w-3xl mx-auto px-5 py-12">
       <div className="mb-8 flex items-center justify-between">
-        <Link to="/" className="text-xl font-bold">Dirt <span className="text-accent">Works</span></Link>
+        <Link to="/" className="text-xl font-bold">
+          Dirt <span className="text-accent">Workz</span>
+        </Link>
         <Link to="/login" className="btn-ghost">Log In</Link>
       </div>
 
       <div className="card">
         <h1 className="text-2xl font-bold">Request a Demo</h1>
         {!submitted ? (
-          <form className="mt-6 grid grid-cols-1 gap-5" onSubmit={e => { e.preventDefault(); setSubmitted(true); }}>
+          <form
+            className="mt-6 grid grid-cols-1 gap-5"
+            onSubmit={e => { e.preventDefault(); setSubmitted(true); }}
+          >
             <div>
               <div className="label">Dealership name</div>
               <input className="input" placeholder="e.g. High Desert Powersports" />
@@ -53,7 +58,6 @@ export default function RequestDemo() {
                 ))}
               </div>
             </div>
-            {/* Honeypot */}
             <input type="text" className="hidden" tabIndex={-1} autoComplete="off" />
             <button className="btn w-fit">Submit</button>
           </form>
