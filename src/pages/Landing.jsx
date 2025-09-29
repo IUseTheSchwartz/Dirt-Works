@@ -14,6 +14,7 @@ export default function Landing() {
       </header>
 
       <main className="flex-1">
+        {/* HERO */}
         <section className="max-w-6xl mx-auto px-5 py-20 grid md:grid-cols-2 gap-10 items-center">
           <div>
             <h1 className="text-4xl md:text-5xl font-extrabold leading-tight">
@@ -33,27 +34,41 @@ export default function Landing() {
               <span className="badge">Service (lite)</span>
             </div>
           </div>
-          <div className="card">
-            <div className="h-72 bg-white/5 rounded-xl border border-white/10 grid place-items-center">
-              <span className="text-white/50">Dashboard mock preview</span>
+
+          {/* Preview card */}
+          <div className="card ring-1 ring-accent/20 shadow-accent-glow">
+            <div className="hero-preview">
+              {/* simple “screenshot” mock so it doesn’t look empty */}
+              <div className="preview-topbar" />
+              <div className="preview-sidebar" />
+              <div className="preview-main">
+                <div className="preview-widget" />
+                <div className="preview-grid">
+                  <div /><div /><div />
+                  <div /><div /><div />
+                </div>
+              </div>
             </div>
             <p className="mt-3 text-sm text-white/60">
-              Demo visuals only. No live data—yet.
+              Visual preview only. No live data—yet.
             </p>
           </div>
         </section>
 
-        <section className="max-w-6xl mx-auto px-5 pb-20 grid md:grid-cols-3 gap-6">
-          {[
-            ["Leads that don’t get lost", "Unified inbox and fast follow-ups."],
-            ["Inventory that moves", "Photos, QR labels, aged unit alerts."],
-            ["Test rides in one tap", "Waivers + scheduling links."],
-          ].map(([h, s]) => (
-            <div key={h} className="card">
-              <h3 className="font-semibold">{h}</h3>
-              <p className="text-sm text-white/70 mt-2">{s}</p>
-            </div>
-          ))}
+        {/* FEATURES */}
+        <section className="accent-stripe">
+          <div className="max-w-6xl mx-auto px-5 py-12 grid md:grid-cols-3 gap-6">
+            {[
+              ["Leads that don’t get lost", "Unified inbox and fast follow-ups."],
+              ["Inventory that moves", "Photos, QR labels, aged unit alerts."],
+              ["Test rides in one tap", "Waivers + scheduling links."],
+            ].map(([h, s]) => (
+              <div key={h} className="card border-l-4 border-accent/80">
+                <h3 className="font-semibold">{h}</h3>
+                <p className="text-sm text-white/70 mt-2">{s}</p>
+              </div>
+            ))}
+          </div>
         </section>
       </main>
 
