@@ -12,9 +12,12 @@ import Dashboard from "./pages/app/Dashboard.jsx";
 import Inventory from "./pages/app/Inventory.jsx";
 import Documents from "./pages/app/Documents.jsx";
 
-// NEW
+// Existing (customers)
 import Customers from "./pages/app/Customers.jsx";
 import CustomerDetail from "./pages/app/CustomerDetail.jsx";
+
+// NEW: Admin Console
+import AdminConsole from "./pages/app/AdminConsole.jsx";
 
 const router = createBrowserRouter([
   { path: "/", element: <Landing /> },
@@ -26,9 +29,12 @@ const router = createBrowserRouter([
     children: [
       { index: true, element: <Dashboard /> },
       { path: "customers", element: <Customers /> },
-      { path: "customers/:id", element: <CustomerDetail /> }, // detail page w/ tabs
+      { path: "customers/:id", element: <CustomerDetail /> },
       { path: "inventory", element: <Inventory /> },
       { path: "documents", element: <Documents /> },
+
+      // NEW
+      { path: "admin", element: <AdminConsole /> },
     ],
   },
 ]);
