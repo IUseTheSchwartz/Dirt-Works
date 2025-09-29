@@ -1,6 +1,9 @@
 // File: src/pages/app/AppShell.jsx
 import { NavLink, Outlet, Link, useLocation } from "react-router-dom";
 
+// 🔐 Mock: flip to false to hide Admin Console in the UI
+const MOCK_IS_PLATFORM_ADMIN = true;
+
 const NavItem = ({ to, children }) => (
   <NavLink
     to={to}
@@ -32,14 +35,18 @@ export default function AppShell() {
           <NavItem to="/app/customers">Customers</NavItem>
           <NavItem to="/app/inventory">Inventory</NavItem>
           <NavItem to="/app/documents">Documents</NavItem>
-          {/* Future:
-          <NavItem to="/app/leads">Leads</NavItem>
-          <NavItem to="/app/quotes">Quotes</NavItem>
-          <NavItem to="/app/service">Service</NavItem>
-          <NavItem to="/app/reports">Reports</NavItem>
-          <NavItem to="/app/settings">Settings</NavItem>
-          */}
         </nav>
+
+        {MOCK_IS_PLATFORM_ADMIN && (
+          <>
+            <div className="text-xs uppercase tracking-wider text-white/50 px-2 mt-6 mb-2">
+              Admin
+            </div>
+            <nav className="flex flex-col gap-1">
+              <NavItem to="/app/admin">Admin Console</NavItem>
+            </nav>
+          </>
+        )}
 
         <div className="mt-6 p-3 rounded-xl bg-accent/10 text-accent text-sm">
           Demo Mode: mock data only.
