@@ -1,5 +1,6 @@
 // File: src/pages/app/AppShell.jsx
-import { NavLink, Outlet, Link, useLocation } from "react-router-dom";
+import { NavLink, Outlet, Link, useLocation, useNavigate } from "react-router-dom";
+import ProfileMenu from "../../components/ProfileMenu.jsx";
 
 // 🔐 Mock: flip to false to hide Admin Console in the UI
 const MOCK_IS_PLATFORM_ADMIN = true;
@@ -8,9 +9,7 @@ const NavItem = ({ to, children }) => (
   <NavLink
     to={to}
     end
-    className={({ isActive }) =>
-      isActive ? "navlink navlink-active" : "navlink"
-    }
+    className={({ isActive }) => (isActive ? "navlink navlink-active" : "navlink")}
   >
     {children}
   </NavLink>
@@ -18,35 +17,27 @@ const NavItem = ({ to, children }) => (
 
 export default function AppShell() {
   const location = useLocation();
+  const navigate = useNavigate();
 
   return (
-    <div className="min-h-screen grid grid-cols-[260px_1fr]">
+    <div className="grid min-h-screen grid-cols-[260px,1fr]">
       {/* Sidebar */}
-      <aside className="h-screen sticky top-0 border-r border-white/10 p-4">
-        <Link to="/" className="block text-xl font-bold mb-4">
-          Dirt <span className="text-accent">Workz</span>
+      <aside className="border-r border-white/10 bg-white/5 p-4">
+        <Link to="/app" className="mb-6 flex items-center gap-2">
+          <span className="inline-flex h-9 w-9 items-center justify-center rounded-xl bg-gradient-to-br from-indigo-500 to-fuchsia-500 font-bold">
+            DW
+          </span>
+          <div className="text-lg font-semibold">Dirt Workz</div>
         </Link>
 
-        <div className="text-xs uppercase tracking-wider text-white/50 px-2 mb-2">
-          Main
-        </div>
-        <nav className="flex flex-col gap-1">
+        <nav className="space-y-1">
           <NavItem to="/app">Dashboard</NavItem>
           <NavItem to="/app/customers">Customers</NavItem>
           <NavItem to="/app/inventory">Inventory</NavItem>
+          <NavItem to="/app/trade-in">Trade-In</NavItem>
           <NavItem to="/app/documents">Documents</NavItem>
+          {MOCK_IS_PLATFORM_ADMIN && <NavItem to="/app/admin">Admin Console</NavItem>}
         </nav>
-
-        {MOCK_IS_PLATFORM_ADMIN && (
-          <>
-            <div className="text-xs uppercase tracking-wider text-white/50 px-2 mt-6 mb-2">
-              Admin
-            </div>
-            <nav className="flex flex-col gap-1">
-              <NavItem to="/app/admin">Admin Console</NavItem>
-            </nav>
-          </>
-        )}
 
         <div className="mt-6 p-3 rounded-xl bg-accent/10 text-accent text-sm">
           Demo Mode: mock data only.
@@ -56,17 +47,27 @@ export default function AppShell() {
       {/* Main */}
       <main className="p-6">
         {/* Top bar */}
-        <div className="flex items-center justify-between mb-6">
+        <div className="mb-6 flex items-center justify-between">
           <div className="flex items-center gap-3">
             <div className="text-lg font-semibold">Dirt Workz CRM</div>
-            <span className="text-xs px-2 py-1 rounded-md bg-white/10 text-white/60">
+            <span className="rounded-md bg-white/10 px-2 py-1 text-xs text-white/60">
               {location.pathname}
             </span>
           </div>
+
           <div className="flex items-center gap-3">
             <input className="input w-72" placeholder="Search (mock)" />
-            <button className="btn-ghost">New Task</button>
-            <button className="btn-ghost">Profile</button>
+            {/* replace old 'Profile' button with dropdown menu */}
+            <ProfileMenu
+              // pass a real user photo when you have auth; empty = blank avatar
+              photoUrl=""
+              name="Dealer User"
+              onSettings={() => navigate("/app/settings", { replace: false })}
+              onLogout={() => {
+                // wire into your auth sign-out when ready
+                navigate("/login");
+              }}
+            />
           </div>
         </div>
 
